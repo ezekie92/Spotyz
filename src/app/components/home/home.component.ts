@@ -11,9 +11,9 @@ export class HomeComponent {
   newSongs: any[];
 
   constructor(private spotify: SpotifyService) {
-    this.spotify.getNewReleases().subscribe((data: any) => {
-      this.newSongs = data.albums.items;
-      console.log(data.albums.items);
+
+    this.spotify.getNewReleases().subscribe(data => {
+      this.newSongs = data;
     });
   }
 
