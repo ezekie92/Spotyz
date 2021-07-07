@@ -2,19 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
+import * as configToken from 'configToken.json';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class SpotifyService {
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
 
   getQuery(query: string) {
     const url = `https://api.spotify.com/v1/${query}`;
 
     const headers = new HttpHeaders({
-      Authorization: 'Bearer BQCS-dZ7P02MlTn7DbgCCPiTOkhFzMker22DrkOUrMbsv6ryvVjwqa0ALDXIoI9wbHucAv5liERoY3rScnM'
+      Authorization: configToken.prefix + configToken.token
     });
 
     return this.http.get(url, { headers });
