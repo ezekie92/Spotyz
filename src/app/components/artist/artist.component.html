@@ -17,4 +17,33 @@
             Go back
         </button>
     </div>
+
+</div>
+
+<div class="row m-5">
+    <div class="col">
+        <table class="table text-white">
+            <thead class="bg-dark">
+                <tr>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Vista previa</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let track of topTracks">
+                    <td>
+                        <img [src]="track.album.images | noimage" alt="album image" class="img-thumb">
+                    </td>
+                    <td>{{ track.album.name }}</td>
+                    <td>{{ track.name }}</td>
+                    <td>
+                        <iframe [src]="track.id | safedom:'https://open.spotify.com/embed/track/'" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
